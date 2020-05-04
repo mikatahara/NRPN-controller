@@ -1,0 +1,218 @@
+﻿<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+	<script src="https://mikatahara.github.io/RefaceDX/myfilerw.js"></script>
+	<script src="https://mikatahara.github.io/drawgraph.js"></script>
+	<script src="https://mikatahara.github.io/mywebmidiapi.js"></script>
+
+	<script src="nrpn.js"></script>
+	<script src="msetsomething.js"></script>
+	<script src="rwsetting.js"></script>
+	<script src="nrpnclass.js"></script>
+
+</head>
+
+<style type="text/css">
+
+	#slide1 { position:absolute; top: 80px; left:50px ; background-color: #f0f0f0; }
+	#slide2 { position:absolute; top: 80px; left:350px; background-color: #f0f0f0; }
+	#slide3 { position:absolute; top: 80px; left:650px; background-color: #f0f0f0; }
+	#slide4 { position:absolute; top: 80px; left:950px; background-color: #f0f0f0; }
+
+	#slide5 { position:absolute; top:180px; left:50px ; background-color: #f0f0f0; }
+	#slide6 { position:absolute; top:180px; left:350px; background-color: #f0f0f0; }
+	#slide7 { position:absolute; top:180px; left:650px; background-color: #f0f0f0; }
+	#slide8 { position:absolute; top:180px; left:950px; background-color: #f0f0f0; }
+
+	#slide9 { position:absolute; top:280px; left:50px ; background-color: #f0f0f0; }
+	#slide10{ position:absolute; top:280px; left:350px; background-color: #f0f0f0; }
+	#slide11{ position:absolute; top:280px; left:650px; background-color: #f0f0f0; }
+	#slide12{ position:absolute; top:280px; left:950px; background-color: #f0f0f0; }
+
+	#slide13{ position:absolute; top:380px; left:50px ; background-color: #f0f0f0; }
+	#slide14{ position:absolute; top:380px; left:350px; background-color: #f0f0f0; }
+	#slide15{ position:absolute; top:380px; left:650px; background-color: #f0f0f0; }
+	#slide16{ position:absolute; top:380px; left:950px; background-color: #f0f0f0; }
+
+	#mcc1h  { position:absolute; top:112px; left:90px ; background-color: #f0f0f0; }
+	#mcc1l  { position:absolute; top:112px; left:206px; background-color: #f0f0f0; }
+	#mcc2h  { position:absolute; top:112px; left:390px; background-color: #f0f0f0; }
+	#mcc2l  { position:absolute; top:112px; left:506px; background-color: #f0f0f0; }
+	#mcc3h  { position:absolute; top:112px; left:690px; background-color: #f0f0f0; }
+	#mcc3l  { position:absolute; top:112px; left:806px; background-color: #f0f0f0; }
+	#mcc4h  { position:absolute; top:112px; left:990px; background-color: #f0f0f0; }
+	#mcc4l  { position:absolute; top:112px; left:1106px;background-color: #f0f0f0; }
+
+	#mcc5h  { position:absolute; top:212px; left:90px ; background-color: #f0f0f0; }
+	#mcc5l  { position:absolute; top:212px; left:206px; background-color: #f0f0f0; }
+	#mcc6h  { position:absolute; top:212px; left:390px; background-color: #f0f0f0; }
+	#mcc6l  { position:absolute; top:212px; left:506px; background-color: #f0f0f0; }
+	#mcc7h  { position:absolute; top:212px; left:690px; background-color: #f0f0f0; }
+	#mcc7l  { position:absolute; top:212px; left:806px; background-color: #f0f0f0; }
+	#mcc8h  { position:absolute; top:212px; left:990px; background-color: #f0f0f0; }
+	#mcc8l  { position:absolute; top:212px; left:1106px;background-color: #f0f0f0; }
+
+	#mcc9h  { position:absolute; top:312px; left:90px ; background-color: #f0f0f0; }
+	#mcc9l  { position:absolute; top:312px; left:206px; background-color: #f0f0f0; }
+	#mcc10h { position:absolute; top:312px; left:390px; background-color: #f0f0f0; }
+	#mcc10l { position:absolute; top:312px; left:506px; background-color: #f0f0f0; }
+	#mcc11h { position:absolute; top:312px; left:690px; background-color: #f0f0f0; }
+	#mcc11l { position:absolute; top:312px; left:806px; background-color: #f0f0f0; }
+	#mcc12h { position:absolute; top:312px; left:990px; background-color: #f0f0f0; }
+	#mcc12l { position:absolute; top:312px; left:1106px;background-color: #f0f0f0; }
+
+	#mcc13h { position:absolute; top:412px; left:90px ; background-color: #f0f0f0; }
+	#mcc13l { position:absolute; top:412px; left:206px; background-color: #f0f0f0; }
+	#mcc14h { position:absolute; top:412px; left:390px; background-color: #f0f0f0; }
+	#mcc14l { position:absolute; top:412px; left:506px; background-color: #f0f0f0; }
+	#mcc15h { position:absolute; top:412px; left:690px; background-color: #f0f0f0; }
+	#mcc15l { position:absolute; top:412px; left:806px; background-color: #f0f0f0; }
+	#mcc16h { position:absolute; top:412px; left:990px; background-color: #f0f0f0; }
+	#mcc16l { position:absolute; top:412px; left:1106px;background-color: #f0f0f0; }
+
+	#tblposl{ position:absolute; top:480px; left:50px ; vertical-align: middle; background-color: #f0f0f0; }
+	#tblpos2{ position:absolute; top:520px; left:50px ; background-color: #f0f0f0; }
+
+	#cbody{
+          background-color: #ffffff;
+          color : "#000000;
+          margin-right:28px;
+          margin-left:28px;
+          margin-top:20px;
+          auto;
+          -webkit-text-size-adjust: 100%;
+    }
+
+    a:link 		{ color: #4040ff; }
+    a:visited	{ color: #ff0000; }
+    a:hover		{ color: #0000ff; }
+    a:active	{ color: #ff8000; }
+
+	.sans { color: #222222; font-family:sans-serif ; font-size: 10pt; line-height : 1.5em}
+	.mono { color: #222222; font-family:monospace ; font-size: 10pt; line-height : 1.5em}
+
+</style>
+
+<body id="cbody">
+
+<h2>NRPN Creator</h2>
+
+<canvas id="slide1" width="280" height=84"></canvas>
+<canvas id="slide2" width="280" height=84"></canvas>
+<canvas id="slide3" width="280" height=84"></canvas>
+<canvas id="slide4" width="280" height=84"></canvas>
+
+<canvas id="slide5" width="280" height=84"></canvas>
+<canvas id="slide6" width="280" height=84"></canvas>
+<canvas id="slide7" width="280" height=84"></canvas>
+<canvas id="slide8" width="280" height=84"></canvas>
+
+<canvas id="slide9" width="280" height=84"></canvas>
+<canvas id="slide10" width="280" height=84"></canvas>
+<canvas id="slide11" width="280" height=84"></canvas>
+<canvas id="slide12" width="280" height=84"></canvas>
+
+<canvas id="slide13" width="280" height=84"></canvas>
+<canvas id="slide14" width="280" height=84"></canvas>
+<canvas id="slide15" width="280" height=84"></canvas>
+<canvas id="slide16" width="280" height=84"></canvas>
+
+<form name="midievent">
+	<select id="mcc1h" class="sel" name="sld1h"></select>
+	<select id="mcc1l" class="sel" name="sld1l"></select>
+	<select id="mcc2h" class="sel" name="sld2h"></select>
+	<select id="mcc2l" class="sel" name="sld2l"></select>
+	<select id="mcc3h" class="sel" name="sld3h"></select>
+	<select id="mcc3l" class="sel" name="sld3l"></select>
+	<select id="mcc4h" class="sel" name="sld4h"></select>
+	<select id="mcc4l" class="sel" name="sld4l"></select>
+
+	<select id="mcc5h" class="sel" name="sld5h"></select>
+	<select id="mcc5l" class="sel" name="sld5l"></select>
+	<select id="mcc6h" class="sel" name="sld6h"></select>
+	<select id="mcc6l" class="sel" name="sld6l"></select>
+	<select id="mcc7h" class="sel" name="sld7h"></select>
+	<select id="mcc7l" class="sel" name="sld7l"></select>
+	<select id="mcc8h" class="sel" name="sld8h"></select>
+	<select id="mcc8l" class="sel" name="sld8l"></select>
+
+	<select id="mcc9h"  class="sel" name="sld9h" ></select>
+	<select id="mcc9l"  class="sel" name="sld9l" ></select>
+	<select id="mcc10h" class="sel" name="sld10h"></select>
+	<select id="mcc10l" class="sel" name="sld10l"></select>
+	<select id="mcc11h" class="sel" name="sld11h"></select>
+	<select id="mcc11l" class="sel" name="sld11l"></select>
+	<select id="mcc12h" class="sel" name="sld12h"></select>
+	<select id="mcc12l" class="sel" name="sld12l"></select>
+
+	<select id="mcc13h" class="sel" name="sld13h"></select>
+	<select id="mcc13l" class="sel" name="sld13l"></select>
+	<select id="mcc14h" class="sel" name="sld14h"></select>
+	<select id="mcc14l" class="sel" name="sld14l"></select>
+	<select id="mcc15h" class="sel" name="sld15h"></select>
+	<select id="mcc15l" class="sel" name="sld15l"></select>
+	<select id="mcc16h" class="sel" name="sld16h"></select>
+	<select id="mcc16l" class="sel" name="sld16l"></select>
+</form>
+
+<!--	------------------------------------------------------------------ -->
+<table border="0" id="tblposl" class="sans">
+<form name="saveload">
+<tr><td>
+FILE:
+</td><td>
+<input type="text" name="filename" id="file_name" size="16" value=param.txt width="100"></input>
+</td><td>
+<input type="button" value="save" onClick="savedata();">
+</td><td>
+<input type="file" id="filedata" accept="text/*">
+</td><td>
+<input type="button" id="file_read" value="load" onClick="loaddata();">
+</td>
+</form>
+<!-- </table> -->
+<td width="40"></td>
+
+<!--	------------------------------------------------------------------ -->
+<td>MIDI Input Port:</td>
+<!-- <table border="0" id="tblpos2"> -->
+<td valign="middle">
+<form name="input_device_select">
+<select name="ids" onChange="inputDeviceSelect(this)">
+<option value="0">No Device
+</select>
+</form>
+</td>
+
+<td>Output Port:</td>
+<td>
+<form name="output_device_select">
+<select name="ids" onChange="outputDeviceSelect(this);">
+<option value="0">No Device
+</select>
+</form>
+</td>
+</tr>
+</table>
+
+<!--	------------------------------------------------------------------ -->
+<form name="midiset">
+<table border="0" id="tblpos2" class="sans">
+<tr>
+<td>Channel:</td>
+<td><input type="number" id="channel"  step="1" min="1" max="16" value="1"></td>
+<td width="40"></td>
+<td>NoteNum:</td>
+<td><select class="sel" name="notenum" id="note"></select></td>
+<td width="40"></td>
+<td><input type="button" value="RUN" id="start"></input></td>
+</tr></table>
+</form>
+
+<div id="log"></div>
+</body>
+
+
+</html>
