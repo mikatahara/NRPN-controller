@@ -62,6 +62,8 @@ NRPNC.prototype={
 		this.fdg.fConvVPos(this.fdg.mcX,this.fdg.mcY);	//ViewportÀ•W‚É•ÏŠ·
 
 		var ival=Math.floor(this.fdg.iVx);		//Knob‚Ì’l‚ğ‹‚ß‚é
+		if(ival<=0) ival=0;
+		else if(ival>=127) ival=127;
 		this.fSetDATAH(ival);
 	},
 
