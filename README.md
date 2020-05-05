@@ -1,10 +1,10 @@
 # NRPN-controller
 
-![2020050501](jpg\2020050501.jpg)
+![2020050501](2020050501.jpg)
 
 ## MIDI PORT
 
-![2020050502](jpg\2020050502.jpg)
+![2020050502](2020050502.jpg)
 
 - Please select MIDI **Output Port** by pulldown mane you used.
 
@@ -12,21 +12,19 @@
 
 ## Cnanel,and Note Number and RUN
 
-![2020050504](jpg\2020050504.jpg)
+![2020050504](2020050504.jpg)
 
 - **RUN :** For checking the NRPN control, send Note On periodically. Note number is define by **NoteNum** box.
 
 ## Data Slider and NRPN MSB & LSB
 
-![2020050505](jpg\2020050505.jpg)
+![2020050505](2020050505.jpg)
 
 - You can send NRPN Data by a slider knob. 
 
 ## Setting Save and Load
 
-![2020050503](jpg\2020050503.jpg)
-
-
+![2020050503](2020050503.jpg)
 
 - You can save/load configuration of this page.
 
